@@ -6,6 +6,11 @@ webserver = require('gulp-webserver')
 
 # Default rule
 gulp.task 'default', ->
+  gulp.run('jade','sass','coffee')
+  gulp.run('watch')
+
+# watch
+gulp.task 'watch', ->
   gulp.watch './src/*.jade', ['jade']
   gulp.watch './src/*.scss', ['sass']
   gulp.watch './src/*.coffee', ['coffee']
@@ -15,7 +20,6 @@ gulp.task 'default', ->
     })
   )
 
-# subroutine
 gulp.task 'jade', ->
   gulp.src('./src/*.jade').pipe(jade()).pipe(gulp.dest('./dst/'))
 
